@@ -7,7 +7,9 @@ int main()
     ll->addFront(1);
     ll->addFront(2);
     ll->addEnd(3);
-    std::cout << ll->removeFront() << "\n";
+    //std::cout << ll->removeFront() << "\n";
     ll->display();
+    int a = ll->removeEnd();
+    std::cout << a << "\n";
     delete ll;
 }

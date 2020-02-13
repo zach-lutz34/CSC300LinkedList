@@ -47,32 +47,47 @@ void LinkedList::addEnd(int payload)
    else 
    {
        Node* n = new Node(payload);
-       Node* currentNode = this->head;
-       while(!currentNode->getNextNode())
+       Node* currNode = this->head;
+       while(!currNode->getNextNode())
        {
-           currentNode = currentNode->getNextNode();
+           currNode = currNode->getNextNode();
        }
-       currentNode->setNextNode(n);
+       currNode->setNextNode(n);
        this->count++;
    }
 }
 
 int LinkedList::getEnd()
 {
-    return this->head->data;
+    Node* currNode = this->head;
+    while(currNode->getNextNode())
+    {
+        currNode = currNode->getNextNode();
+    }
+    return currNode->getPayload();
 }
 
 int LinkedList::removeEnd()
 {
-    Node* nTR = this->head;
-    this->head = this->head->getNextNode();
-    int val = nodeToReturn->getEnd();
-    delete nTR;
-    this->count--;
-    return val;
+    if(!this->head->getNextNode())
+    {
+        return this->removeFront();
+    }
+    else
+    {
+        Node* last = this->getEnd();
+        Node* next = this->head;
+        while(!next->getNextNode() != last)
+        {
+            next = next->getNextNode();
+        }
+        next->setNextNode(0);
+        int val = last->getPayload();
+        delete last;
+        this->count--;
+        return val;
+    }
 }
-
-
     
 void LinkedList::display()
 {
