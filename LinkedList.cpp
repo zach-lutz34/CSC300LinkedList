@@ -38,26 +38,23 @@ int LinkedList::removeFront()
 }
 
 // hw 2.13
-int LinkedList::addEnd(int data, Node *head)
+void LinkedList::addEnd(int payload)
 {
-   Node *n2 = new Node;
-   n2->data = data;
-   n2->next = NULL;
-
-   if(head == NULL)
+   if(!this->head)
    {
-       head = n2;
-   } else {
-       Node *t = new Node;
-       t = head;
-
-       while(temp->next != NULL)
+       this->addFront(payload);
+   } 
+   else 
+   {
+       Node* n = new Node(payload);
+       Node* currentNode = this->head;
+       while(!currentNode->getNextNode())
        {
-           t = t->next;
+           currentNode = currentNode->getNextNode();
        }
-       t->next = last;
+       currentNode->setNextNode(n);
+       this->count++;
    }
-   return head;
 }
 
 int LinkedList::getEnd()
