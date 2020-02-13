@@ -18,4 +18,4 @@ Node* Node::getNextNode()
 void Node::setNextNode(Node* n)
 {
     this->nextNode = n;
-}
+} 
