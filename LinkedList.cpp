@@ -88,6 +88,73 @@ int LinkedList::removeEnd()
         return val;
     }
 }
+
+void LinkedList::addAtIndex(int index, int payload)
+{
+    if(index == 0)
+    {
+        this->addFront(payload);
+    }
+    else if (index == this->count)
+    {
+        this->addEnd(payload);
+    }
+    else
+    {
+        Node* newNode = new Node(payload);
+        Node* firstPoint = this->head->getNextNode();
+        Node* beforePoint = this->head;
+
+        for(int i = 1; i<index; i++)
+        {
+            firstPoint = firstPoint->getNextNode();
+            beforePoint = beforePoint->getNextNode();
+        }
+
+        beforePoint->setNextNode(newNode);
+        newNode->setNextNode(firstPoint);
+        this->count++; 
+    } 
+}
+
+int LinkedList::removeIndex(int index)
+{
+    int val;
+    if(index == 0)
+    {
+        val = this->removeFront();
+    }
+    else if (index == this->count-1)
+    {
+        val = this->removeEnd();
+    }
+    else
+    {
+        Node* firstPoint = this->head->getNextNode();
+        Node* beforePoint = this->head;
+
+        for(int i = index-1; i>0; i--)
+        {
+            firstPoint = firstPoint->getNextNode();
+            beforePoint = beforePoint->getNextNode();
+        }
+        val = firstPoint->getPayload();
+        beforePoint->setNextNode((firstPoint->getNextNode()));
+        firstPoint->setNextNode(0);
+        this->count--;
+    } 
+    return val;
+}
+
+int LinkedList::getIndex(int index)
+{
+    Node* traverse = this->head;
+    for(int i = index; i>0; i--)
+    {
+        traverse = traverse->getNextNode();
+    }
+    return traverse->getPayload();
+}
     
 void LinkedList::display()
 {
