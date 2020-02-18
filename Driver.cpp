@@ -7,9 +7,10 @@ int main()
     ll->addFront(1);
     ll->addFront(2);
     ll->addEnd(3);
+    ll->addAtIndex(1,7);
     //std::cout << ll->removeFront() << "\n";
     ll->display();
-    int a = ll->removeEnd();
-    std::cout << a << "\n";
+    int val = ll->getIndex(2);
+    std::cout << val << "\n";
     delete ll;
 }
