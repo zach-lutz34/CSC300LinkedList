@@ -155,6 +155,20 @@ int LinkedList::getIndex(int index)
     }
     return traverse->getPayload();
 }
+
+int LinkedList::sort()
+{
+    int array[] = {3, 2, 1, 7};
+    int n = sizeof(array)/sizeof(array[0]);
+
+    std::sort(array, array + n);
+
+    for (int con &i: array)
+    {
+        std::cout << i << ' ';
+    }
+    return 0;
+}
     
 void LinkedList::display()
 {
